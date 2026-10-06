@@ -68,4 +68,4 @@ Frozen settings: PO amount tolerance 0 yen; PO scenario mix `matched 0.70, no_po
 
 ## Deviations
 
-None so far. Any change after the first scoring of the sample will be listed here with the original numbers kept.
+None. The sample was scored once (2026-10-06) with the harness committed in `035298a`; results are in `results/REPORT.md`, which adds one clearly labelled post-hoc analysis and changes none of the pre-registered numbers.
