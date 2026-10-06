@@ -1,8 +1,10 @@
 # Keiri-Agent
 
+![Keiri-Agent results](images/keiri-agent.png)
+
 A LangGraph back-office agent for Japanese qualified invoices (適格請求書). It takes the extraction of [Invoice-Check JP](https://github.com/raihan-js/invoice-check-jp), verifies it, matches a purchase order, and either posts the invoice, sends it to a human reviewer, or rejects it, with an audit trail and a state that survives a restart.
 
-> **Status: milestone 3 of 4 (LangSmith evaluation done; CI gate and release next).** The protocol was fixed in advance in [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md); results and the post-hoc analysis are in [`results/REPORT.md`](results/REPORT.md). Everything here runs on **synthetic** invoices, a **synthetic** registry and **synthetic** purchase orders. This is not an accounting product and gives no tax advice.
+> **Status: all four milestones done (graph, durability and review, LangSmith evaluation, CI gate).** The protocol was fixed in advance in [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md); results and the post-hoc analysis are in [`results/REPORT.md`](results/REPORT.md). Everything here runs on **synthetic** invoices, a **synthetic** registry and **synthetic** purchase orders. This is not an accounting product and gives no tax advice.
 
 ## The graph
 
@@ -68,6 +70,25 @@ On the 200 hold-out invoices (unseen layouts, extractor 51.5% exact): 48.5%, 9.0
 
 **How to read v3.** Its drop from 12 to 6 unsafe approvals (paired p = 0.031, which does not survive a Bonferroni correction over the four pre-registered paired tests) is mostly lower automation: 5 of the 6 invoices were routed away because the synthetic PO world disagreed or the invoice was a duplicate, for reasons unrelated to the wrong field. Where the PO world agrees with the truth, PO matching stopped **1** wrong extraction on the test sample (an item line) and **11 of 12** on the hold-out (item text, the field a PO can see), with no correct extraction stopped there. It does nothing for invoice number or issue date, which is what remains. The precision is flattering: the POs are built from the true item lines. Full tables, the hypothesis scorecard and the limits: [`results/REPORT.md`](results/REPORT.md).
 
+## CI gate
+
+`keiri-gate` runs the graph from a pull request on the frozen 300 invoices (extractions are cached and the graph is deterministic, so the comparison with the committed baseline `results/gate_baseline.json` is exact, invoice by invoice, like FlipGate's per-item flips) and:
+
+- **FAIL**s if an invoice that was not an unsafe auto-approval in the baseline is one now (approved with a wrong field, or approved although review or reject was expected), or if automation drops by more than 5 points (so sending everything to review cannot satisfy it);
+- returns **INVALID** if the pinned inputs (gold, extractions, registry) differ from the baseline's hashes, instead of certifying anything;
+- never penalises a fix.
+
+What a failing change looks like (here: a graph without the PO and duplicate stages; the six invoices are the ones analysed above):
+
+```
+## Keiri-Agent gate: FAIL
+- 6 invoice(s) newly auto-approved with a wrong field
+- 80 invoice(s) newly auto-approved although review or reject was expected
+- Newly unsafe (wrong field): inv_003336, inv_003375, inv_003397, inv_003534, inv_003797, inv_003857
+```
+
+`.github/workflows/gate.yml` runs the tests (including the SIGKILL-and-resume ones, against a Postgres service) and the gate on every pull request and writes the report to the job summary. An optional second job uploads the v3 experiment to LangSmith when the repository has a `LANGSMITH_API_KEY` secret (never on forks). Verified in a fresh clone and a fresh virtualenv: 72 passed, 1 skipped (the validation-split oracle needs `scripts/fetch_data.py`), gate exit code 0. Changing the baseline is deliberate: `keiri-gate --update-baseline` in its own commit, with the reason.
+
 ## Durability, measured
 
 State lives in PostgreSQL (LangGraph's `PostgresSaver` for checkpoints, a `keiri_ledger` table for postings). `tests/test_restart.py` runs the graph in a subprocess against a real database, kills it with **SIGKILL** at three moments, resumes in a **new process**, and checks the result:
@@ -109,7 +130,7 @@ That is one setup, not a law of LangGraph; it is enough to say the default is no
 python3 -m venv .venv && .venv/bin/pip install -e ".[dev,api]"
 .venv/bin/python scripts/fetch_data.py        # gold labels + synthetic registry (public dataset, CC-BY-4.0)
 cp .env.example .env && sed -i 's/change-me/<a password>/g' .env && docker compose up -d     # PostgreSQL on 127.0.0.1:55432
-.venv/bin/python -m pytest tests -q           # 66 tests (the Postgres ones skip if the database is not reachable)
+.venv/bin/python -m pytest tests -q           # 73 tests (the Postgres ones skip if the database is not reachable)
 .venv/bin/python scripts/run_eval.py --name test300 --split test --ids data/eval300_ids.json --preds ../invoice-check-jp/results/preds/qlora_test.jsonl   # offline evaluation
 .venv/bin/python scripts/serve.py             # review page at http://127.0.0.1:8800/
 ```
@@ -119,6 +140,8 @@ cp .env.example .env && sed -i 's/change-me/<a password>/g' .env && docker compo
 1. Graph design: done.
 2. Durability and human approval: done (PostgreSQL in Docker, review page and API, SIGKILL-and-resume tests, replay).
 3. LangSmith evaluation: done (300-invoice dataset, per-invoice and summary evaluators, three experiments checked against the offline run).
-4. CI gate and release: a GitHub Action that fails a pull request if unsafe auto-approvals rise.
+4. CI gate and release: done (exact per-invoice gate, GitHub Action, write-up).
+
+Not yet done: a live extractor served with vLLM (the evaluation replays stored extractions), LangSmith screenshots in the repo (the experiments are listed in `results/langsmith_experiments.md`), and any test on real invoices or purchase orders.
 
 Licence: MIT for the code. Data: Invoice-Check JP (CC-BY-4.0, synthetic). The extractor adapter used elsewhere is non-commercial (Qwen Research License).
