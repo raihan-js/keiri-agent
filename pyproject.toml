@@ -1,0 +1,22 @@
+[project]
+name = "keiriagent"
+version = "0.1.0"
+description = "A LangGraph back-office agent for Japanese qualified invoices: extract, verify, match a purchase order, human approval, durable state, LangSmith evaluation"
+requires-python = ">=3.10"
+dependencies = [
+  "langgraph>=1.2,<1.3",
+  "langgraph-checkpoint-postgres>=3.1,<3.2",
+  "psycopg[binary,pool]>=3.3,<3.4",
+  "langsmith>=0.14,<0.15",
+  "invoicecheck @ git+https://github.com/raihan-js/invoice-check-jp@ef45007",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "numpy>=1.26", "scipy>=1.11"]
+api = ["fastapi>=0.140", "uvicorn>=0.30", "httpx>=0.27"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
