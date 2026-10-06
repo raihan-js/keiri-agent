@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Keiri-Agent review queue</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--mut:#666;--line:#ddd;--acc:#3b3bd9;--bad:#b3261e;--ok:#1b7a3d}
+@media (prefers-color-scheme:dark){:root{--bg:#14141a;--fg:#e8e8ee;--mut:#9a9aa8;--line:#34343f;--acc:#8d8dff;--bad:#ff8a80;--ok:#6fd48f}}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif;margin:0 auto;max-width:960px;padding:16px}
+h1{font-size:20px} h2{font-size:16px;margin:20px 0 6px} .mut{color:var(--mut)} .bad{color:var(--bad)} .ok{color:var(--ok)}
+table{border-collapse:collapse;width:100%} td,th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+button{font:inherit;padding:6px 12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
+button.primary{background:var(--acc);color:#fff;border-color:var(--acc)} input,textarea{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:6px;width:100%;box-sizing:border-box}
+pre{background:rgba(127,127,127,.12);padding:8px;border-radius:6px;overflow:auto;font-size:13px} .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px} .row>*{flex:1 1 140px}
+</style></head><body>
+<h1>Keiri-Agent review queue</h1>
+<p class="mut">Synthetic invoices only. A run waits here when a check failed; your answer resumes it from its saved state.</p>
+<div id="queue"></div><div id="detail"></div><p id="msg" role="status"></p>
+<script>
+const $=id=>document.getElementById(id);
+const el=(t,props={},...kids)=>{const e=document.createElement(t);Object.assign(e,props);kids.flat().forEach(k=>e.append(k));return e};
+async function api(path,opts){const r=await fetch(path,opts);const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.detail||r.statusText);return j}
+async function load(){
+  const q=await api('/reviews');const box=$('queue');box.replaceChildren();
+  if(!q.length){box.append(el('p',{className:'mut'},'Nothing is waiting for review.'));return}
+  const t=el('table',{},el('tr',{},el('th',{},'Invoice'),el('th',{},'Why it is here'),el('th',{})));
+  q.forEach(r=>t.append(el('tr',{},el('td',{},r.invoice_id),el('td',{className:'bad'},(r.payload.reasons||[]).join(', ')),
+    el('td',{},el('button',{onclick:()=>open_(r)},'Open')))));
+  box.append(t);
+}
+function open_(r){
+  const p=r.payload, e=p.extraction||{};
+  const d=$('detail');d.replaceChildren(
+    el('h2',{},'Invoice '+r.invoice_id),
+    el('pre',{},JSON.stringify({issuer:e.issuer_name,registration_number:e.registration_number,issue_date:e.issue_date,recipient:e.recipient_name,
+      invoice_number:e.invoice_number,grand_total:e.grand_total,totals:e.totals,items:e.items},null,1)),
+    el('h2',{},'Checks'),el('pre',{},JSON.stringify({verification:p.verification,po_match:p.po_match},null,1)),
+    p.error?el('p',{className:'bad'},'Last answer was not accepted: '+p.error):'',
+    el('div',{className:'row'},el('input',{id:'who',placeholder:'Your name (required)',value:localStorage.getItem('who')||''})),
+    el('div',{className:'row'},el('textarea',{id:'corr',rows:3,placeholder:'Corrections as JSON, e.g. {"registration_number":"T1234567890123"} (only for Correct)'})),
+    el('div',{className:'row'},
+      el('button',{className:'primary',onclick:()=>send(r.invoice_id,'approve')},'Approve and post'),
+      el('button',{onclick:()=>send(r.invoice_id,'correct')},'Correct and post'),
+      el('button',{onclick:()=>send(r.invoice_id,'reject')},'Reject')));
+}
+async function send(id,action){
+  const reviewer=$('who').value.trim();localStorage.setItem('who',reviewer);
+  let corrections=null;const c=$('corr').value.trim();
+  try{if(c)corrections=JSON.parse(c)}catch{return say('Corrections are not valid JSON.',true)}
+  try{const r=await api('/reviews/'+encodeURIComponent(id),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,reviewer,corrections})});
+    say('Done: '+id+' is '+r.outcome+'.',false);$('detail').replaceChildren();load()}catch(e){say(e.message,true)}
+}
+function say(m,bad){const s=$('msg');s.textContent=m;s.className=bad?'bad':'ok'}
+load().then(()=>{const id=new URLSearchParams(location.search).get('open');if(id)api('/reviews').then(q=>{const r=q.find(x=>x.invoice_id===id);if(r)open_(r)})});
+</script></body></html>

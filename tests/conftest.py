@@ -14,25 +14,17 @@ from keiriagent.graph import Deps
 from keiriagent.ledger import InMemoryLedger
 from keiriagent.po import POLine, PoStore, PurchaseOrder
 
-FIX = Path(__file__).parent / "fixtures"
+from support import FIX, load_gold, load_registry, po_for  # noqa: E402,F401  (po_for is re-exported for the tests)
 
 
 @pytest.fixture(scope="session")
 def gold():
-    return {g["invoice_id"]: g for g in read_jsonl(FIX / "gold_sample.jsonl")}
+    return load_gold()
 
 
 @pytest.fixture(scope="session")
 def registry():
-    return load_synthetic_registry(FIX / "registry_sample.jsonl")
-
-
-def po_for(g, **over):
-    """A PO that agrees with the gold invoice, with optional overrides."""
-    args = dict(po_id=f"PO-{g['invoice_id']}", supplier_reg_no=g["true_issuer_registration_number"], buyer_name=g["recipient"]["name"],
-                lines=tuple(POLine(i["description"], i["quantity"], i["unit_price"]) for i in g["items"]), total=g["grand_total"])
-    args.update(over)
-    return PurchaseOrder(**args)
+    return load_registry()
 
 
 @pytest.fixture
@@ -41,3 +33,36 @@ def make_deps(gold, registry):
         ext = extractions if extractions is not None else {k: gold_to_target(v) for k, v in gold.items()}
         return Deps(StaticExtractor(ext), registry, PoStore(orders), InMemoryLedger(ledger_seed))
     return _make
+
+
+# ---- PostgreSQL (throwaway database per test; skipped when the server is not reachable) ----
+import uuid
+
+import psycopg
+
+
+def _admin_dsn():
+    from keiriagent.pg import default_dsn
+    try:
+        return default_dsn()
+    except RuntimeError:
+        return None
+
+
+@pytest.fixture
+def pg_dsn():
+    base = _admin_dsn()
+    if not base:
+        pytest.skip("no KEIRI_PG_DSN")
+    try:
+        admin = psycopg.connect(base, autocommit=True, connect_timeout=3)
+    except psycopg.OperationalError:
+        pytest.skip("PostgreSQL not reachable")
+    name = "keiri_test_" + uuid.uuid4().hex[:10]
+    admin.execute(f"CREATE DATABASE {name}")
+    head, _ = base.rsplit("/", 1)
+    try:
+        yield f"{head}/{name}"
+    finally:
+        admin.execute(f"DROP DATABASE IF EXISTS {name} WITH (FORCE)")
+        admin.close()

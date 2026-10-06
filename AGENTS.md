@@ -17,11 +17,12 @@ A LangGraph back-office agent for Japanese qualified invoices: ingest, extract (
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -e ".[dev,api]"
 .venv/bin/python scripts/fetch_data.py          # gold + synthetic registry from the public HF dataset
-.venv/bin/python -m pytest tests -q             # unit, node, graph and oracle tests
+.venv/bin/python -m pytest tests -q             # unit, node, graph, oracle, Postgres, restart and service tests
+docker start keiri-pg                           # (or docker compose up -d) PostgreSQL for the Postgres tests; DSN in .env
 .venv/bin/python scripts/render_graphs.py       # docs/graphs/*.mmd from the compiled graphs
 ```
 
 ## Status
 - M1 graph design: DONE 2026-10-06 (state, nodes, three versions, 48 tests incl. an oracle test, diagrams, pre-registration).
-- M2 durability and human approval (PostgresSaver in Docker, review UI, kill-and-resume test, time travel): next.
-- M3 LangSmith evaluation; M4 CI gate and release: not started.
+- M2 durability and human approval: DONE 2026-10-06 (PostgreSQL container `keiri-pg` on 127.0.0.1:55432, `pg.py`, `ops.py`, `service.py`, review page, 3 SIGKILL tests, durability A/B: sync 10/10 vs async 0/10, replay in a separate thread; 60 tests). Always pass durability="sync".
+- M3 LangSmith evaluation (next); M4 CI gate and release: not started. LangSmith note: every invoke and every resume is its own root trace; `list_runs` is deprecated (use `client.runs.query`); check the free-tier trace limit before experiments.
