@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-DATA = Path(__file__).parent.parent / "data" / "invoice-check-jp"
+DATA = Path(__file__).parent.parent / "data" / "eval"                   # committed frozen inputs
 
 
 def test_deps_wrap_the_registry_once(make_deps):
@@ -15,7 +15,6 @@ def test_deps_wrap_the_registry_once(make_deps):
     assert Deps(d.extractor, d.registry, d.po_store, d.ledger).registry is d.registry          # not wrapped twice
 
 
-@pytest.mark.skipif(not (DATA / "gold_test.jsonl").exists(), reason="run scripts/fetch_data.py first")
 def test_many_threads_on_the_full_registry_never_raise():
     from langgraph.checkpoint.memory import InMemorySaver
 
@@ -24,9 +23,7 @@ def test_many_threads_on_the_full_registry_never_raise():
     from keiriagent.graph import Deps, build_graph
     from keiriagent.po_synth import build_cases
 
-    preds = Path(__file__).parent.parent.parent / "invoice-check-jp" / "results" / "preds" / "qlora_test.jsonl"
-    if not preds.exists():
-        pytest.skip("cached predictions not available")
+    preds = DATA / "qlora_test.jsonl"
     gold = read_jsonl(DATA / "gold_test.jsonl")
     store, seed = stores_from_cases(build_cases(gold, seed=0))
     graph = build_graph(Deps(CachedExtractor(preds), load_synthetic_registry(DATA / "registry_synthetic.jsonl"), store, fresh_ledger(seed)),

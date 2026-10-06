@@ -9,12 +9,15 @@ from pathlib import Path
 
 import pytest
 
-DATA = Path(__file__).parent.parent / "data" / "invoice-check-jp"
-pytestmark = pytest.mark.skipif(not (DATA / "gold_val.jsonl").exists(), reason="run scripts/fetch_data.py first")
+ROOT = Path(__file__).parent.parent
+DIRS = {"val": ROOT / "data" / "invoice-check-jp", "test": ROOT / "data" / "eval"}      # test inputs are committed; val needs scripts/fetch_data.py
 
 
 @pytest.mark.parametrize("split", ["val", "test"])
 def test_perfect_extraction_reproduces_expected_decisions(split):
+    DATA = DIRS[split]
+    if not (DATA / f"gold_{split}.jsonl").exists():
+        pytest.skip("run scripts/fetch_data.py first")
     from invoicecheck.extraction import gold_to_target
     from langgraph.checkpoint.memory import InMemorySaver
 

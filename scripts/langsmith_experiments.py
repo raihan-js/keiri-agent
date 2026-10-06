@@ -17,7 +17,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
-os.environ.setdefault("LANGSMITH_API_KEY", (Path.home() / ".config/langsmith/key").read_text().strip())
+if not os.environ.get("LANGSMITH_API_KEY"):                  # CI passes the key as a secret; locally it is read from the private file
+    os.environ["LANGSMITH_API_KEY"] = (Path.home() / ".config/langsmith/key").read_text().strip()
 os.environ.setdefault("LANGSMITH_TRACING", "true")
 
 from invoicecheck.evaluation import clopper_pearson  # noqa: E402
@@ -33,9 +34,9 @@ from keiriagent.metrics import unsafe_vs_expected, unsafe_wrong_field  # noqa: E
 from keiriagent.po_synth import build_cases  # noqa: E402
 from keiriagent.state import AUTO_APPROVE, HUMAN_REVIEW, REJECT  # noqa: E402
 
-DATA = ROOT / "data/invoice-check-jp"
+DATA = ROOT / "data/eval"                                    # the committed frozen inputs (also used by the CI gate)
 DATASET = "keiri-eval-300-v1"
-PREDS = ROOT.parent / "invoice-check-jp/results/preds/qlora_test.jsonl"
+PREDS = DATA / "qlora_test.jsonl"
 
 
 def world():

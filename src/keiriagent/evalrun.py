@@ -15,12 +15,13 @@ from .graph import Deps, build_graph
 def run_version(version, gold_rows, cases_by_id, extractor, registry, po_store, ledger_seed, run_id="eval"):
     deps = Deps(extractor, registry, po_store, fresh_ledger(ledger_seed))
     graph = build_graph(deps, version, InMemorySaver())
+    name = getattr(version, "name", version)
     records = []
     for g in sorted(gold_rows, key=lambda x: x["invoice_id"]):
         i = g["invoice_id"]
         c = cases_by_id[i]
         t0 = time.perf_counter()
-        out = graph.invoke({"invoice_id": i, "document": g.get("image", "")}, {"configurable": {"thread_id": f"{run_id}:{version}:{i}"}})
+        out = graph.invoke({"invoice_id": i, "document": g.get("image", "")}, {"configurable": {"thread_id": f"{run_id}:{name}:{i}"}})
         ms = 1000 * (time.perf_counter() - t0)
         s = score(extractor.extract(i), gold_to_target(g))
         records.append({

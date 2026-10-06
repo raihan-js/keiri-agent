@@ -1,0 +1,1535 @@
+{
+ "version": "v3_verify_po",
+ "n": 300,
+ "commit": "",
+ "inputs_sha256": {
+  "gold": "d3c5f9f3741863e3ea33c344c25009f5392d9ce6fd4d5d5f4809cfbaa6bc02b1",
+  "extractions": "ad7b335e3a544792a43359b157598d7279241fa57c20fd12ff22ed1d87e48715",
+  "registry": "b17134bc8bfd00b61a03c95c65bec4404c4d97007f15fae30f190794b3e72e12"
+ },
+ "summary": {
+  "unsafe_auto_approval": {
+   "k": 6,
+   "n": 300,
+   "rate": 0.02,
+   "lo": 0.00737416200172641,
+   "hi": 0.0430210826735169
+  },
+  "unsafe_vs_expected": {
+   "k": 1,
+   "n": 300,
+   "rate": 0.0033333333333333335,
+   "lo": 8.438913231780044e-05,
+   "hi": 0.018431252048067885
+  },
+  "automation": {
+   "k": 151,
+   "n": 300,
+   "rate": 0.5033333333333333,
+   "lo": 0.44529906783848777,
+   "hi": 0.561301132472079
+  }
+ },
+ "records": {
+  "inv_003300": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003301": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003306": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003307": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003308": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003311": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003313": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003314": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003316": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003318": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003319": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003320": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003323": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003325": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003329": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003331": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003332": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003333": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003335": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003336": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003337": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003339": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003340": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003341": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003342": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003346": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003350": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003351": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003359": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003360": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003361": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003363": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003364": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003366": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003367": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003369": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003370": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003374": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003375": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003378": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003380": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003381": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003382": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003384": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003386": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003387": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003389": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003391": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003392": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003393": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003394": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003395": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003396": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003397": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003398": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003399": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003401": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003402": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003403": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003404": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003407": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003409": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003411": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003412": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003413": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003414": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003422": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003424": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003427": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003428": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003432": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003433": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003438": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003442": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003443": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003445": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003447": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003450": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003453": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003454": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003458": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003459": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003461": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003466": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003470": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003471": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003475": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003479": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003480": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003482": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003483": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003488": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003489": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003490": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003491": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003493": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003495": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003498": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003500": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003505": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003508": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003509": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003512": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003513": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003514": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003517": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003518": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003520": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003523": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003526": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003527": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003528": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003529": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003534": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003539": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003540": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003541": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003544": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003545": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003546": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003547": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003549": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003553": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003556": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003557": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003560": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003565": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003566": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003570": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003571": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003573": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003578": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003580": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003581": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003582": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003587": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003588": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003590": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003591": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003593": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003594": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003597": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003598": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003600": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003602": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003604": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003605": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003608": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003609": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003610": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003612": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003613": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003617": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003622": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003623": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003624": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003625": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003626": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003627": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003628": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003629": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003631": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003632": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003633": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003634": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003636": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003638": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003639": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003640": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003641": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003642": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003644": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003645": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003646": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003647": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003648": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003652": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003653": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003655": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003657": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003658": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003661": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003662": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003666": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003667": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003668": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003672": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003673": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003674": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003678": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": true,
+   "unsafe_vs_expected": false
+  },
+  "inv_003682": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003685": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003691": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003692": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003694": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003696": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003697": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003700": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003701": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003703": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003706": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003707": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003708": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003709": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003710": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003713": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003714": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003717": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003718": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003719": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003721": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003725": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003726": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003727": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003729": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003730": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003732": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003733": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003734": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003735": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003737": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003740": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003742": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003744": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003749": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003753": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003755": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003756": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003758": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003760": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003761": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003763": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003765": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003766": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003769": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003770": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003773": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003775": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": true,
+   "unsafe_vs_expected": false
+  },
+  "inv_003776": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": true,
+   "unsafe_vs_expected": false
+  },
+  "inv_003779": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003780": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003783": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003787": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003788": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003789": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003791": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003794": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003795": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003796": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": true,
+   "unsafe_vs_expected": false
+  },
+  "inv_003797": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003799": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003800": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003801": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003802": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003803": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003804": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003805": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003806": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003808": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003811": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003812": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003816": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003818": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": true,
+   "unsafe_vs_expected": true
+  },
+  "inv_003819": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003820": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003822": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003823": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003825": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003829": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003833": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003837": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003839": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003842": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003844": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003845": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003847": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003848": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003855": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003856": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003857": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003858": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003859": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003861": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003864": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003865": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003866": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003869": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003870": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003873": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003877": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003879": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003880": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003884": {
+   "decision": "reject",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003885": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003888": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003889": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003891": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003892": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003897": {
+   "decision": "human_review",
+   "unsafe_wrong_field": false,
+   "unsafe_vs_expected": false
+  },
+  "inv_003899": {
+   "decision": "auto_approve",
+   "unsafe_wrong_field": true,
+   "unsafe_vs_expected": false
+  }
+ }
+}

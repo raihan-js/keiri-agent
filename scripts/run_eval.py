@@ -20,7 +20,6 @@ from keiriagent.extractors import CachedExtractor  # noqa: E402
 from keiriagent.metrics import fmt, paired, summarise, unsafe_vs_expected, unsafe_wrong_field  # noqa: E402
 from keiriagent.po_synth import build_cases  # noqa: E402
 
-DATA = ROOT / "data/invoice-check-jp"
 
 
 def report(name, results, comparisons):
@@ -49,6 +48,7 @@ if __name__ == "__main__":
     ap.add_argument("--ids")
     ap.add_argument("--only-with-predictions", action="store_true")
     a = ap.parse_args()
+    DATA = ROOT / ("data/eval" if a.split == "test" else "data/invoice-check-jp")        # test inputs are committed; val and hold-out need scripts/fetch_data.py
     all_gold = read_jsonl(DATA / f"gold_{a.split}.jsonl")
     cases = build_cases(all_gold, seed=0)
     by_id = {c["invoice_id"]: c for c in cases}

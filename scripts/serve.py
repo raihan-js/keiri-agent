@@ -30,11 +30,11 @@ def load_langsmith_key():
 
 
 def build(version="v3_verify_po"):
-    data = ROOT / "data/invoice-check-jp"
+    data = ROOT / "data/eval"
     gold = read_jsonl(data / "gold_test.jsonl")
     cases = build_cases(gold, seed=0)                       # the pre-registered PO world over all 600 test invoices
     store, seed = stores_from_cases(cases)
-    deps = Deps(CachedExtractor(ROOT.parent / "invoice-check-jp/results/preds/qlora_test.jsonl"),
+    deps = Deps(CachedExtractor(data / "qlora_test.jsonl"),
                 load_synthetic_registry(data / "registry_synthetic.jsonl"), store, PostgresLedger(default_dsn(), seed=seed))
     return create_app(deps, default_dsn(), version)
 

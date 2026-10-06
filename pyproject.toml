@@ -20,3 +20,6 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[project.scripts]
+keiri-gate = "keiriagent.gate:main"

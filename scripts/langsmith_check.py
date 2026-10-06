@@ -13,7 +13,8 @@ from pathlib import Path
 
 warnings.filterwarnings("ignore")
 ROOT = Path(__file__).resolve().parent.parent
-os.environ.setdefault("LANGSMITH_API_KEY", (Path.home() / ".config/langsmith/key").read_text().strip())
+if not os.environ.get("LANGSMITH_API_KEY"):
+    os.environ["LANGSMITH_API_KEY"] = (Path.home() / ".config/langsmith/key").read_text().strip()
 os.environ["LANGSMITH_TRACING"] = "false"
 sys.path.insert(0, str(ROOT / "src"))
 
@@ -28,7 +29,7 @@ N = 300
 
 if __name__ == "__main__":
     local = json.loads((ROOT / "results/eval_test300.json").read_text())["results"]
-    gold = {g["invoice_id"]: gold_to_target(g) for g in read_jsonl(ROOT / "data/invoice-check-jp/gold_test.jsonl")}
+    gold = {g["invoice_id"]: gold_to_target(g) for g in read_jsonl(ROOT / "data/eval/gold_test.jsonl")}
     c = Client()
     rows, bad = [], 0
     for v in VERSIONS:

@@ -1,0 +1,66 @@
+name: gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: keiri
+          POSTGRES_PASSWORD: keiri
+          POSTGRES_DB: keiri
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U keiri" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      KEIRI_PG_DSN: postgresql://keiri:keiri@127.0.0.1:5432/keiri
+      LANGSMITH_TRACING: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Tests (including the SIGKILL-and-resume tests, against the Postgres service)
+        run: pytest -q
+      - name: Gate (fails if a change lets a new unsafe invoice through)
+        run: |
+          status=0
+          keiri-gate --report gate-report.md || status=$?
+          cat gate-report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gate-report
+          path: gate-report.md
+
+  langsmith:
+    # Optional: runs the three versions as LangSmith experiments when the repository has a LANGSMITH_API_KEY secret (never on forks).
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+    needs: gate
+    runs-on: ubuntu-latest
+    env:
+      LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Experiments
+        if: ${{ env.LANGSMITH_API_KEY != '' }}
+        run: |
+          pip install -e ".[dev]"
+          python scripts/langsmith_experiments.py --prefix "pr-${{ github.event.number }}" --versions v3_verify_po
