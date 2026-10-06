@@ -65,7 +65,18 @@ Duplicates: of 22 duplicate invoices in the test sample, 19 were rejected, 2 wen
 
 ## What the automation number means
 
-With a perfect extractor, the expected decisions allow 58.0% automation on the test sample (174 of 300 are clean, have a matching PO and are not duplicates), and v3 reached 50.3%: of the 174 invoices that should be approved it approved 150 and sent 24 to review, and in all 24 the extraction was wrong. On the hold-out the ceiling is 62.5% and v3 reached 32.0%. The review workload (43.3% on test) is dominated by the synthetic scenario mix (30% of POs are made problematic on purpose, and 11% of invoices carry an injected document issue); it says nothing about real review rates.
+With a perfect extractor, the expected decisions allow 58.0% automation on the test sample (174 of 300 are clean, have a matching PO and are not duplicates), and v3 reached 50.3%: of the 174 invoices that should be approved it approved 150 and sent 24 to review, and in all 24 the extraction was wrong. On the hold-out the ceiling is 62.5% and v3 reached 32.0%. The review workload (43.3% on test) is dominated by the synthetic scenario mix (30% of invoices are given a PO or ledger problem on purpose, and 11% carry an injected document issue); it says nothing about real review rates.
+
+## LangSmith
+
+The same three versions were run as LangSmith experiments on the dataset `keiri-eval-300-v1` (300 synthetic test invoices, examples carry the expected decision and the gold fields; `scripts/langsmith_experiments.py`). Each invoice is one root trace, 900 in total, with a span per node. Per-invoice evaluators: field accuracy, extraction exact, decision correct, unsafe auto-approval, approved-though-review-expected, steps; summary evaluators: the rates above with Clopper-Pearson intervals. Experiment names and links: [`langsmith_experiments.md`](langsmith_experiments.md) (a LangSmith login with access to the workspace is needed).
+
+`scripts/langsmith_check.py` compares each experiment's stored decisions with the offline run, invoice by invoice: **0 of 300 differ in all three versions**, and the unsafe-approval counts are identical (51, 12, 6). Two things were learned on the way, both on the first attempt at these experiments:
+
+- **A shared registry connection returned wrong answers under concurrency.** With two worker threads, the first v2 experiment sent 6 invoices to review as `registry:not_found` for numbers that exist, and one v3 run raised `sqlite3.InterfaceError`. The cause is one SQLite connection shared by several threads (the Invoice-Check JP `Registry`). It is wrapped in a lock (`keiriagent/registry.py`), a regression test runs 8 threads over the full registry, and the affected experiments were deleted and re-run. The offline numbers are unaffected (single-threaded).
+- **LangSmith's aggregate feedback lags and can double count.** Read right after a run, the per-experiment feedback summed to 302 runs for a 300-invoice experiment, with feedback on only 286 distinct runs. The consistency check therefore reads each run's stored outputs, not the aggregates.
+
+Trace usage: one root trace per invoice and per resume. Disabling evaluator tracing (`disable_evaluator_tracing`) kept it at exactly 300 per experiment. All experiments, trials and re-runs together used about 1,500 root traces.
 
 ## What this does not show
 

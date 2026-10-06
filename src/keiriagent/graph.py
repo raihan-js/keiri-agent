@@ -21,6 +21,7 @@ from .decide import VERSIONS, GraphConfig, decide
 from .extractors import Extractor
 from .ledger import Ledger
 from .po import PoStore, match_po
+from .registry import LockedRegistry
 from .review import apply_corrections, validate_review
 from .state import (AUTO_APPROVE, HUMAN_REVIEW, PENDING_REVIEW, POSTED, REJECT, REJECTED, InvoiceState, audit_entry)
 
@@ -28,9 +29,13 @@ from .state import (AUTO_APPROVE, HUMAN_REVIEW, PENDING_REVIEW, POSTED, REJECT, 
 @dataclass
 class Deps:
     extractor: Extractor
-    registry: Any            # invoicecheck.registry.Registry (real snapshot or the synthetic one)
+    registry: Any            # invoicecheck.registry.Registry (real snapshot or the synthetic one); wrapped for thread safety
     po_store: PoStore
     ledger: Ledger
+
+    def __post_init__(self):
+        if self.registry is not None and not isinstance(self.registry, LockedRegistry):
+            self.registry = LockedRegistry(self.registry)
 
 
 def make_nodes(deps, cfg):
