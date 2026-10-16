@@ -2,6 +2,8 @@
 
 ![Keiri-Agent results](images/keiri-agent.png)
 
+Write-up: [PO Matching Looked Like It Halved Unsafe Invoice Approvals Until I Checked Why](https://dev.to/raihan-js/po-matching-looked-like-it-halved-unsafe-invoice-approvals-until-i-checked-why-1hj8)
+
 A LangGraph back-office agent for Japanese qualified invoices (適格請求書). It takes the extraction of [Invoice-Check JP](https://github.com/raihan-js/invoice-check-jp), verifies it, matches a purchase order, and either posts the invoice, sends it to a human reviewer, or rejects it, with an audit trail and a state that survives a restart.
 
 > **Status: all four milestones done (graph, durability and review, LangSmith evaluation, CI gate).** The protocol was fixed in advance in [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md); results and the post-hoc analysis are in [`results/REPORT.md`](results/REPORT.md). Everything here runs on **synthetic** invoices, a **synthetic** registry and **synthetic** purchase orders. This is not an accounting product and gives no tax advice.
